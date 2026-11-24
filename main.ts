@@ -12,5 +12,12 @@ const SENTENCE =
 // verification); the grader runs `node main.ts` with no arguments.
 const outPath = process.argv[2] ?? "/output/entry.txt";
 
+// Sentence is 142 characters — well inside the 200-character gate.
+if (SENTENCE.length > 200) {
+  throw new Error(
+    `Sentence is ${SENTENCE.length} characters, exceeding the 200-character gate.`,
+  );
+}
+
 mkdirSync(dirname(outPath), { recursive: true });
 writeFileSync(outPath, SENTENCE, "utf8");
